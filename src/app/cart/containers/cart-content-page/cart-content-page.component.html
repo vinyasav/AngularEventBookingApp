@@ -1,0 +1,12 @@
+<div  *ngIf="cartRows$ | async as cartRows">
+  <ng-template #empty>
+    <app-cart-empty></app-cart-empty>
+  </ng-template>
+  <div *ngIf="cartRows.length > 0; else empty">
+    <app-cart-row *ngFor="let row of cartRows" [row]="row" 
+      (remove)="removeFromCart(row)"
+      (clicked)="goToDetail(row.book._id.$oid)"
+      (quantityUpdated)="rowQuantityChanged($event)"></app-cart-row>
+  </div>
+
+</div>

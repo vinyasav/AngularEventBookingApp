@@ -1,0 +1,55 @@
+ <app-cart-content-page></app-cart-content-page>
+ <div class="example-container">
+      <form [class.submitted]="isSubmitted()" (ngSubmit)="onSubmit()" [formGroup]="form" class="order-form">
+          <mat-list formGroupName="identity">
+              <h3 mdSubheader>Booking form</h3>
+              <mat-list-item>
+          
+                <mat-form-field class="example-full-width">
+                  <input matInput  formControlName="Name" [(ngModel)]="attendee.firstAttendee" placeholder="Name">
+                  <mat-hint align="end">Please enter your name</mat-hint>
+                </mat-form-field>
+              </mat-list-item>
+              <br />
+            <mat-list-item>
+                <mat-form-field class="example-full-width">
+                  <input matInput  #email formControlName="email" [(ngModel)]="attendee.email" placeholder="Email">
+                  <mat-hint align="end">Please enter your email”</mat-hint>
+                </mat-form-field>
+          
+              </mat-list-item>
+              <br />
+              <mat-list-item>
+              <mat-form-field >
+                  <input matInput  formControlName="phone" [(ngModel)]="attendee.phoneNo" #phoneNo maxlength="10" placeholder="Phone Number">
+                  <mat-hint align="end">{{phoneNo.value.length}} / 10</mat-hint>
+                </mat-form-field>
+              </mat-list-item>
+              <br />
+              <mat-list-item>
+                  <mat-form-field >
+                      <input  matInput  formControlName="seats" [(ngModel)]="attendee.numAttendee"  (change)="addMember()" #seatsNo placeholder="No. of Seats">
+                      <mat-hint align="end">Please enter number of seats/{{seats}}-1</mat-hint>
+                    </mat-form-field>
+                  </mat-list-item>
+              <br />
+              <mat-list-item *ngFor="let member of attendee.member; let i=index">
+                  <mat-form-field >
+                      <input matInput  formControlName="Name" [(ngModel)]="member.name" placeholder="Name of Attendee {{i+2}}">
+                    </mat-form-field>
+                    <a> 
+                        <i class="material-icons md-48 cart">person_add</i>   
+                      </a> 
+                  </mat-list-item>
+                  
+              <br />
+              </mat-list>
+             
+
+               
+      <button [disabled]="isDisabled()" class="mat-raised-button mat-primary" color="primary" routerLink="/cart/order"><span class="mat-button-wrapper">Submit</span></button><br />
+      <button class="mat-raised-button mat-secondary" color="seondary" routerLink="/cart/order"><span class="mat-button-wrapper">Cancel</span></button>
+
+    </form>
+    </div>
+    

@@ -1,0 +1,8 @@
+<div class="cart-row">
+  <mat-grid-list cols="7" rowHeight="100px">
+    <mat-grid-tile><img width="70px" [src]="row.book.image"/></mat-grid-tile>
+    <mat-grid-tile class="getWidth">{{ row.book.title }}</mat-grid-tile>
+    <!--<mat-grid-tile>{{ row.book.price | currency: 'EUR':true }}</mat-grid-tile>-->   
+  </mat-grid-list>
+  <h4>Number of available seats: {{ row.book.seats }}</h4>
+</div>
